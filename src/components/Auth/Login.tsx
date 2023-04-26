@@ -1,10 +1,13 @@
 import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { useAuthStore } from '../../stores/useAuthStore';
+import { useUserStore } from '../../stores/useUserStore';
 
 
 function Login() {
-
+   const loginSuccess = useAuthStore((state) => state.loginSuccess);
+   const setUser = useUserStore((state) => state.setUser);
    return (
       <div className="flex flex-wrap min-h-screen w-full content-center justify-center bg-gray-200 py-10">
          <div className="flex shadow-md">
@@ -20,9 +23,18 @@ function Login() {
                         const data = res.data
 
                         if(data.email_verified){
-                           console.log("Fuck Yeah")
+                           console.log("Fuck Yeah");
+                           loginSuccess();
+                           if (setUser!= undefined) {
+                              setUser({
+                                 email_verified: data.email_verified, 
+                                 email: data.email, 
+                                 name: data.name, 
+                                 family_name: data.family_name, 
+                                 picture: data.picture
+                              });                             
+                           }                          
                         }else console.log("Fuck Nooo")
-
                      }} onError={() => {
                         console.log('Login Failed');
                      }}/>
