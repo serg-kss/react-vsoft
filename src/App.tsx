@@ -5,6 +5,7 @@ import Login from './components/Auth/Login';
 import {useAuthStore} from './stores/useAuthStore'
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import FoldersArea from './components/FoldersArea/FoldersArea';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         {isLogin ?
           <div>
             <Navbar/>
+            <FoldersArea/>
             <Footer/>
           </div>:
           <Login/>
