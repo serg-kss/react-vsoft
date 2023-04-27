@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 
-interface IF{
+export interface IF{
 
       name: string;
       created: string;
-      id_folder: Number;
+      id_folder: string;
       changes: [];   
 }
 
