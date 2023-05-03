@@ -8,6 +8,10 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import FoldersArea from './components/FoldersArea/FoldersArea';
 import FolderContent from './components/FolderContent/FolderContent';
+import NewFolderForm from './components/FoldersArea/Folder/NewFolderForm';
+import UpdateFolderForm from './components/FolderContent/TableInfo/UpdateFormFolder';
+import FormAddFile from './components/Files/FormAddFile';
+import Photo from './components/Files/FormAddFileClass';
 
 
 
@@ -21,8 +25,11 @@ function App() {
             <div>
               <Navbar/>
               <Routes>
-                <Route  path='/' element={<FoldersArea/>} />
-                <Route  path='/folders/:id' element={<FolderContent/>} />                
+                <Route  path='/' element={<FoldersArea/>}/>
+                <Route  path='/folders/:id' element={<FolderContent/>}/> 
+                <Route  path='/new-folder' element={<NewFolderForm/>}/>
+                <Route  path='/update-folder/:id' element={<UpdateFolderForm/>}/>
+                <Route  path='/add-file/:id' element={<FormAddFile/>}/>            
               </Routes>
               <Footer/>
             </div></Router>:
